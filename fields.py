@@ -32,6 +32,7 @@ def gen_fields():
         for i in range(3):
             rgbc2.append([item[0]/255.0, item[1]/255.0, item[2]/255.0])
     cmap = mpl.colors.ListedColormap(rgbc2)
+    norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
     cmap.set_under("white")
 
     fields.append({
@@ -39,7 +40,9 @@ def gen_fields():
         "fname": "cape",
         "name": "SBCAPE (j/kg)",
         "xa": ":CAPE:surface",
-        "cmp": {}
+        "cmp": {
+            "norm":norm
+        }
     })
     cmap = colormaps["YlOrBr"]
 
