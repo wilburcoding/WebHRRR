@@ -20,7 +20,7 @@ model = "hrrr"
 est = pytz.timezone('US/Eastern')
 fields = (gen_fields())
 now = datetime.now(timezone.utc)
-print(now.date)
+print(str(now.strftime("%Y-%m-%d %H:00")))
 sys.exit(1)
 run = input("Runtime (YYYY-MM-DD HH:00): ")
 start = int(input("Start hour: "))
