@@ -65,7 +65,7 @@ def gen_fields():
         "name": "Reflectivity",
         "xa": ":REFC:",
         "cmp": {
-            norm: kw["norm"]
+            "norm": kw["norm"]
         }
     })
     return fields
