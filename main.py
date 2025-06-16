@@ -12,6 +12,10 @@ def dir_list():
     return os.listdir("runs")
 
 
+@app.route('/dcount')
+def dcount():
+    return {"count": len(os.listdir("runs\\" + request.args.get('run') + "\\" + request.args.get('field')))}
+
 @app.route('/img')
 def get_image():
     return send_file("runs\\" + request.args.get('run') + "\\" + request.args.get('field') + "\\" + request.args.get('hour') + ".png", mimetype='image/png')

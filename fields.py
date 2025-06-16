@@ -4,6 +4,20 @@ from paint.radar2 import cm_reflectivity
 
 
 def gen_fields():
+    vmin = 0.1
+    norm = mpl.colors.Normalize(vmin=vmin, vmax=80)
+    kw = cm_reflectivity().cmap_kwargs
+    kw["norm"] = norm
+    kw["cmap"].set_under("white")
+    fields.append({
+        "cmap": kw["cmap"],
+        "fname": "refc",
+        "name": "Reflectivity",
+        "xa": ":REFC:",
+        "cmp": {
+            "norm": kw["norm"]
+        }
+    })
     fields = []
     rgbc = [[212, 212, 212], [186, 186, 186], [150, 150, 150],
             [115, 115, 115], [77, 77, 77], [59, 59, 59]]
@@ -57,18 +71,5 @@ def gen_fields():
             "vmax": 30
         }
     })
-    vmin = 0.1
-    norm = mpl.colors.Normalize(vmin=vmin, vmax=80)
-    kw = cm_reflectivity().cmap_kwargs
-    kw["norm"] = norm
-    kw["cmap"].set_under("white")
-    fields.append({
-        "cmap": kw["cmap"],
-        "fname": "refc",
-        "name": "Reflectivity",
-        "xa": ":REFC:",
-        "cmp": {
-            "norm": kw["norm"]
-        }
-    })
+
     return fields
